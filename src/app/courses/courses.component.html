@@ -1,0 +1,17 @@
+<div class="courses">
+  <app-toolbox (search)="search($event)" 
+    (addCourse)="addCourse($event)"
+    *ngIf="!isAddPageOpen"></app-toolbox>
+  <app-courses-list [search]="searchValue"
+    *ngIf="!isAddPageOpen"></app-courses-list>
+  <mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event"
+              *ngIf="!isAddPageOpen">
+  </mat-paginator>
+</div>
+<div class="add-course"
+  *ngIf="isAddPageOpen">
+  <app-add-course (closePage)="closePage($event)"></app-add-course>
+</div>
